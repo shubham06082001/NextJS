@@ -10,7 +10,7 @@ export default function Home() {
       <hr />
       <Link href="/users">Users</Link>
       <hr />
-      <Link href="/users/new">New Users</Link>
+      <Link href="/users/new">New Users.</Link>
     </>
   )
 }
