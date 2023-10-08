@@ -1,6 +1,5 @@
-import Image from "next/image"
-import Link from "next/link"
-import AddToCart from "./components/AddToCart"
+import Link from "next/link";
+import AddToCart from "./components/AddToCart";
 
 export default function Home() {
   return (
@@ -12,5 +11,5 @@ export default function Home() {
       <hr />
       <Link href="/users/new">New Users.</Link>
     </>
-  )
+  );
 }

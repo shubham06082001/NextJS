@@ -1,40 +1,23 @@
-import React from "react"
+import React, { Suspense } from "react"
+import UserTable from './UserTable';
 
-interface User {
-  id: number
-  name: string
-  email: string
+interface Props {
+  searchParams: {
+    sortOrder: string
+  }
 }
 
-const UsersPage = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users", {
-    cache: "no-cache",
-  })
-  const users: User[] = await res.json()
+const UsersPage = async ({ searchParams: { sortOrder } }: Props) => {
+  console.log(sortOrder);
   return (
     <main>
       Users Page
       <hr />
       <p>{new Date().toLocaleTimeString()}</p>
       <hr />
-      <table className="table table-bordered">
-        <thead>
-          <tr>
-            <th>id</th>
-            <th>name</th>
-            <th>email</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user) => (
-            <tr key={user.id}>
-              <td>{user.id}</td>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <Suspense fallback={<p>Loading...</p>}>
+       <UserTable sortOrder={sortOrder} />
+      </Suspense>
       <hr />
       <a href="/">Home Page</a>
       <hr />
